@@ -18,7 +18,11 @@ class ViewController: UIViewController {
     var activatedButton = [UIButton]()
     var solutions = [String]()
     
-    var score = 0
+    var score = 0 {
+        didSet { //just after the value was changed
+            scoreLabel.text = "Score: \(score)"
+        }
+    }
     var level = 1
     
     override func loadView() {
@@ -163,6 +167,8 @@ class ViewController: UIViewController {
             
             currentAnswer.text = ""
             score += 1
+            
+            ///scoreLabel.text = "Score: \(score)"
             
             if score % 7 == 0 {
                 let ac = UIAlertController(title: "Well done!", message: "Are u ready for the next level?", preferredStyle: .alert)
