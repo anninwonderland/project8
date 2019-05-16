@@ -80,6 +80,8 @@ class ViewController: UIViewController {
         //clues on buttons
         let buttonsView = UIView()
         buttonsView.translatesAutoresizingMaskIntoConstraints = false
+        buttonsView.layer.borderColor = UIColor(red: 100/255, green: 100/255, blue: 100/255, alpha: 0.5).cgColor
+        buttonsView.layer.borderWidth = 1.0
         view.addSubview(buttonsView)
         
         
@@ -122,7 +124,7 @@ class ViewController: UIViewController {
         
         let width = 150
         let height = 80
-        
+       
         //creating view with buttons
         for row in 0..<4 {
             for column in 0..<5 {
@@ -138,8 +140,6 @@ class ViewController: UIViewController {
                 letterButtons.append(letterButton) //add to an array
             }
         }
-        
-    
     }
 
     override func viewDidLoad() {
@@ -234,6 +234,7 @@ class ViewController: UIViewController {
         
         if letterButtons.count == letterBits.count {
             for i in 0..<letterButtons.count {
+                //letterButtons[i].backgroundColor = .lightGray
                 letterButtons[i].setTitle(letterBits[i], for: .normal)
             }
         }
