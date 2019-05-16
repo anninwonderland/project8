@@ -156,7 +156,7 @@ class ViewController: UIViewController {
     }
     
     @objc func submitTapped(_ sender: UIButton){
-        guard let answerText = currentAnswer.text else { return }
+        guard let answerText = currentAnswer.text else { return } //проверка на заполненность поля
         
         if let solutionPosition = solutions.firstIndex(of: answerText) {
             activatedButton.removeAll()
@@ -175,7 +175,15 @@ class ViewController: UIViewController {
                 ac.addAction(UIAlertAction(title: "Let's go!", style: .default, handler: levelUp))
                 present(ac, animated: true)
             }
-        }
+        } else { //show an error message
+            let ac = UIAlertController(title: "Oops!", message: "The wrong word", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "Ok!", style: .default))
+            currentAnswer.text = ""
+            for button in activatedButton {
+                button.isHidden = false
+            }
+            present(ac, animated: true)
+    }
     }
     
     func  levelUp(action: UIAlertAction) {
